@@ -20,8 +20,21 @@
             letter-spacing: 2px;
         }
 
-        .audio-player {
-            margin: 20px 0 40px 0;
+        .wedding-video {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .wedding-video video {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
         }
 
         .gallery {
@@ -49,12 +62,12 @@
 <body>
 
     <h1>Izabela &amp; Adrian - Nasz Ślub</h1>
-    
-    <div class="audio-player">
-        <audio controls autoplay loop id="bg-audio">
-            <source src="muzyka.mp3" type="audio/mpeg">
-            Twoja przeglądarka nie wspiera odtwarzacza audio.
-        </audio>
+
+    <div class="wedding-video">
+        <video controls playsinline style="width: 100%; height: auto; max-width: 100%; display: block; object-fit: cover;">
+            <source src="media/WeddingIzaAdrian.mp4" type="video/mp4">
+            Twoja przeglądarka nie obsługuje odtwarzacza wideo.
+        </video>
     </div>
 
     <div class="gallery">
@@ -63,17 +76,6 @@
         <img src="foto3.jpg" alt="Zdjęcie ślubne 3">
         <!-- Dodaj kolejne zdjęcia według tego samego schematu -->
     </div>
-
-    <script>
-        // Większość przeglądarek blokuje automatyczne odtwarzanie dźwięku bez interakcji użytkownika.
-        // Poniższy kod uruchamia muzykę przy pierwszym kliknięciu w dowolnym miejscu na stronie.
-        window.addEventListener('click', function() {
-            var audio = document.getElementById('bg-audio');
-            if (audio.paused) {
-                audio.play();
-            }
-        }, { once: true });
-    </script>
 
 </body>
 </html>
