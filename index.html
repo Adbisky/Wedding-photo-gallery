@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nasza Galeria Ślubna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Pinyon Script', 'Monotype Corsiva', 'Apple Chancery', cursive;
+            font-size: 200%;
             background-color: #faf6f0;
             color: #4a4a4a;
             margin: 0;
             padding: 20px;
             text-align: center;
+        }
+
+        .page-header {
+            position: relative;
+            padding-top: 40px;
         }
 
         h1 {
@@ -20,13 +29,23 @@
             letter-spacing: 2px;
         }
 
+        h2 {
+            font-weight: 400;
+        }
+
         .original-photos-download {
-            display: inline-block;
-            margin: 16px 0 24px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: fit-content;
+            margin: 0;
             padding: 10px 16px;
             border-radius: 4px;
             background: #e8dfd3;
             color: #4a4a4a;
+            font-family: Verdana, sans-serif;
+            font-size: 10px;
+            font-weight: 400;
             text-decoration: none;
         }
 
@@ -153,6 +172,14 @@
         }
 
         @media (max-width: 600px) {
+            .page-header {
+                padding-top: 48px;
+            }
+
+            .original-photos-download {
+                right: 0;
+            }
+
             .photo-lightbox {
                 grid-template-columns: 36px minmax(0, 1fr) 36px;
                 gap: 6px;
@@ -173,11 +200,20 @@
 </head>
 <body>
 
-    <h1>Izabela &amp; Adrian - Nasz Ślub</h1>
-    <p>Tychy 29 sierpnia 2026<br>Parafia pw. Świętego Jana Chrzciciela</p>
-    <a class="original-photos-download" href="https://github.com/Adbisky/Wedding-photo-gallery/releases/download/oryginalne-zdjecia-2026-11-10/IzaAdrian_WedddingOriginalPhoto.zip" download>
-        Pobierz oryginalne zdjęcia (102 zdjęcia)
-    </a>
+    <header class="page-header">
+        <a class="original-photos-download" href="https://github.com/Adbisky/Wedding-photo-gallery/releases/download/oryginalne-zdjecia-2026-11-10/IzaAdrian_WedddingOriginalPhoto.zip" download>
+            Pobierz Oryginalne Zdjęcia Ślubne
+        </a>
+        <h1>Izabela &amp; Adrian - Nasz Ślub</h1>
+        <p>Tychy 29 sierpnia 2026<br>Parafia pw. Świętego Jana Chrzciciela</p>
+    </header>
+
+    <div class="wedding-video">
+        <video id="engagement-video" controls playsinline style="width: 100%; height: auto; max-width: 100%; display: block; object-fit: cover;">
+            <source src="media/I&amp;A.mp4" type="video/mp4">
+            Twoja przeglądarka nie obsługuje odtwarzacza wideo.
+        </video>
+    </div>
 
     <div class="wedding-video">
         <video controls playsinline style="width: 100%; height: auto; max-width: 100%; display: block; object-fit: cover;">
@@ -186,6 +222,22 @@
         </video>
     </div>
 
+    <script>
+        const engagementVideo = document.querySelector('#engagement-video');
+        const seekToOneSecond = () => {
+            if (engagementVideo.duration >= 1) {
+                engagementVideo.currentTime = 1;
+            }
+        };
+
+        if (engagementVideo.readyState >= HTMLMediaElement.HAVE_METADATA) {
+            seekToOneSecond();
+        } else {
+            engagementVideo.addEventListener('loadedmetadata', seekToOneSecond, { once: true });
+        }
+    </script>
+
+    <h2>Zdjęcia ślubne</h2>
     <div class="gallery">
         <img src="media/Photo_Medium/DSC_4626.jpg" alt="Zdjęcie ślubne" loading="lazy" decoding="async">
         <img src="media/Photo_Medium/DSC_4630.jpg" alt="Zdjęcie ślubne" loading="lazy" decoding="async">
@@ -291,6 +343,27 @@
         <img src="media/Photo_Medium/DSC_8537.jpg" alt="Zdjęcie ślubne" loading="lazy" decoding="async">
     </div>
 
+    <h2>Sesja narzeczeńska</h2>
+    <div class="gallery">
+        <img src="media/Photo_Engagement/rozmiar internetowy-01.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-02.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-03.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-04.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-05.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-06.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-07.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-08.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-09.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-10.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-11.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-12.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-13.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-14.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-15.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-16.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+        <img src="media/Photo_Engagement/rozmiar internetowy-17.jpg" alt="Zdjęcie zaręczynowe" loading="lazy" decoding="async">
+    </div>
+
     <dialog class="photo-lightbox" id="photo-lightbox" aria-label="Powiększone zdjęcie">
         <button class="close-button" type="button" aria-label="Zamknij powiększone zdjęcie">Zamknij</button>
         <button class="previous-button" type="button" aria-label="Poprzednie zdjęcie">‹</button>
@@ -300,8 +373,8 @@
     </dialog>
 
     <script>
-        const gallery = document.querySelector('.gallery');
-        const galleryImages = Array.from(gallery.querySelectorAll('img'));
+        const galleries = document.querySelectorAll('.gallery');
+        const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
         const lightbox = document.querySelector('#photo-lightbox');
         const lightboxImage = lightbox.querySelector('img');
         const closeButton = lightbox.querySelector('button');
@@ -332,16 +405,18 @@
             image.dataset.photoIndex = index;
         });
 
-        gallery.addEventListener('click', event => {
-            const image = event.target.closest('img');
-            if (image) openLightbox(Number(image.dataset.photoIndex));
-        });
+        galleries.forEach(gallery => {
+            gallery.addEventListener('click', event => {
+                const image = event.target.closest('img');
+                if (image) openLightbox(Number(image.dataset.photoIndex));
+            });
 
-        gallery.addEventListener('keydown', event => {
-            if (event.target.matches('img') && (event.key === 'Enter' || event.key === ' ')) {
-                event.preventDefault();
-                openLightbox(Number(event.target.dataset.photoIndex));
-            }
+            gallery.addEventListener('keydown', event => {
+                if (event.target.matches('img') && (event.key === 'Enter' || event.key === ' ')) {
+                    event.preventDefault();
+                    openLightbox(Number(event.target.dataset.photoIndex));
+                }
+            });
         });
 
         closeButton.addEventListener('click', () => lightbox.close());
